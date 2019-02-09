@@ -29,6 +29,10 @@ interface AfishaLoad<T> {
 	result: T[];
 }
 
+interface FilmViewModel {
+	film: AfishaViewModel
+}
+
 interface StateToProps {
 	result: AfishaViewModel[];
 }
@@ -38,4 +42,4 @@ interface DispatchToProps {
 	clear: () => void;
 }
 
-export { AfishaViewModel, Session, Actor, AfishaLoad, StateToProps, DispatchToProps };
+export { AfishaViewModel, Session, Actor, AfishaLoad, StateToProps, DispatchToProps, FilmViewModel };

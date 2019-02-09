@@ -1,9 +1,9 @@
 import { AfishaViewModel, AfishaLoad } from './Schedule/interfaces';
-import { Login } from './Login/interfaces';
+import { LoginState } from './Login/interfaces';
 
-interface State {
+interface ReducerState {
 	reducerKinoAfisha: AfishaLoad<AfishaViewModel>;
-	reducerLogin: Login;
+	reducerLogin: LoginState;
 }
 
-export { State };
+export { ReducerState };
