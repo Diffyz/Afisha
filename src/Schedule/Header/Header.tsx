@@ -6,12 +6,11 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import { getCookie } from 'src/Login/actions';
 
+import './header.css';
 const styles = {
 	root: {
 		flexGrow: 1,
@@ -24,7 +23,6 @@ const styles = {
 		marginRight: 20,
 	},
 };
-
 class Header extends React.Component<any> {
 	state = {
 		auth: true,
@@ -32,7 +30,7 @@ class Header extends React.Component<any> {
 	};
 
 	handleChange = (event: any) => {
-		this.setState({ auth: event.target.checked });
+		this.setState({ auth: getCookie() != '' });
 	};
 
 	handleMenu = (event: any) => {
@@ -48,54 +46,48 @@ class Header extends React.Component<any> {
 		const open = Boolean(anchorEl);
 
 		return (
-			<div className={classes.root}>
-				<FormGroup>
-					<FormControlLabel
-						control={
-							<Switch checked={auth} onChange={this.handleChange} aria-label='LoginSwitch' />
-						}
-						label={auth ? 'Logout' : 'Login'}
-					/>
-				</FormGroup>
-				<AppBar position='static'>
-					<Toolbar>
-						<IconButton className={classes.menuButton} color='inherit' aria-label='Menu'>
-							<MenuIcon />
-						</IconButton>
-						<Typography variant='h6' color='inherit' className={classes.grow}>
-							Photos
+			<div className='header'>
+				<div className={classes.root}>
+					<AppBar position='static'>
+						<Toolbar>
+							<IconButton className={classes.menuButton} color='inherit' aria-label='Menu'>
+								<MenuIcon />
+							</IconButton>
+							<Typography variant='h6' color='inherit' className={classes.grow}>
+								KINO AFISHA UA
 						</Typography>
-						{auth && (
-							<div>
-								<IconButton
-									aria-owns={open ? 'menu-appbar' : undefined}
-									aria-haspopup='true'
-									onClick={this.handleMenu}
-									color='inherit'
-								>
-									<AccountCircle />
-								</IconButton>
-								<Menu
-									id='menu-appbar'
-									anchorEl={anchorEl}
-									anchorOrigin={{
-										vertical: 'top',
-										horizontal: 'right',
-									}}
-									transformOrigin={{
-										vertical: 'top',
-										horizontal: 'right',
-									}}
-									open={open}
-									onClose={this.handleClose}
-								>
-									<MenuItem onClick={this.handleClose}>Profile</MenuItem>
-									<MenuItem onClick={this.handleClose}>My account</MenuItem>
-								</Menu>
-							</div>
-						)}
-					</Toolbar>
-				</AppBar>
+							{auth && (
+								<div>
+									<IconButton
+										aria-owns={open ? 'menu-appbar' : undefined}
+										aria-haspopup='true'
+										onClick={this.handleMenu}
+										color='inherit'
+									>
+										<AccountCircle />
+									</IconButton>
+									<Menu
+										id='menu-appbar'
+										anchorEl={anchorEl}
+										anchorOrigin={{
+											vertical: 'top',
+											horizontal: 'right',
+										}}
+										transformOrigin={{
+											vertical: 'top',
+											horizontal: 'right',
+										}}
+										open={open}
+										onClose={this.handleClose}
+									>
+										<MenuItem onClick={this.handleClose}>Profile</MenuItem>
+										<MenuItem onClick={this.handleClose}>My account</MenuItem>
+									</Menu>
+								</div>
+							)}
+						</Toolbar>
+					</AppBar>
+				</div>
 			</div>
 		);
 	}

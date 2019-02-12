@@ -1,8 +1,8 @@
-import { DomainName } from 'src/constants';
+import { DOMAIN_NAME } from 'src/constants';
 
 const fetchHelper = {
 	Get: async (searchCriteria: string): Promise<any> => {
-		return fetch(`${DomainName}${searchCriteria}`)
+		return fetch(`${DOMAIN_NAME}${searchCriteria}`)
 			.then((response) => {
 				return response.json();
 			})

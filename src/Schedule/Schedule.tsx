@@ -2,6 +2,10 @@ import * as React from 'react';
 import { GetAfisha } from './actions';
 import { StateToProps, DispatchToProps, AfishaViewModel } from './interfaces';
 import Header from './Header/Header';
+import { Listing } from './Listing/Listing';
+
+import './schedule.css';
+import '../common/styles.css';
 
 class Schedule extends React.Component<DispatchToProps & StateToProps> {
 	componentDidMount = async (): Promise<void> => {
@@ -13,7 +17,13 @@ class Schedule extends React.Component<DispatchToProps & StateToProps> {
 		return (
 			<div>
 				<Header />
-				<p>123</p>
+				<div className='article-body'>
+					<div className='articles'>
+						{this.props.result.map(x => (
+							<Listing key={x.url} film={x} />
+						))}
+					</div>
+				</div>
 			</div>
 		);
 	}

@@ -1,0 +1,22 @@
+.container {
+	max-width: 100%;
+	margin: auto;
+}
+.greeting {
+	padding: 1rem;
+}
+.loginButton {
+	margin-right: 45%;
+}
+.registrationButton {
+	margin-left: 45%;
+}
+.hide {
+	display: none;
+}
+.loginForm {
+	text-align: center;
+	width: 30%;
+	margin-left: 32%;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
