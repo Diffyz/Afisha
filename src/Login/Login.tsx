@@ -4,7 +4,7 @@ import { DispatchToProps, StateToProps, FormState } from './interfaces';
 import { Input } from 'src/common/Input/Input';
 import { Button } from 'src/common/buttons/Button';
 import { authorization } from './actions';
-import { withRouter } from 'react-router-dom';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 
 import './login.css';
 
@@ -44,8 +44,8 @@ class Form extends React.Component<FormState & StateToProps> {
 	}
 }
 
-class Login extends React.Component<StateToProps & DispatchToProps, StateToProps> {
-	constructor(props: StateToProps & DispatchToProps) {
+class Login extends React.Component<RouteComponentProps & StateToProps & DispatchToProps, StateToProps> {
+	constructor(props: RouteComponentProps & StateToProps & DispatchToProps) {
 		super(props);
 		this.state = {
 			login: '',
@@ -70,21 +70,21 @@ class Login extends React.Component<StateToProps & DispatchToProps, StateToProps
 
 	onSubmit(): void {
 		if (this.state.login == 'admin' && this.state.password == 'admin') {
-			authorization(this.state.login, this.state.password);
-			window.location.reload();
+			authorization(this.state.login);
+			this.props.history.push('/schedule');
 		} else {
-			alert('login: admin\npassword: admin');
+			alert('login: admin\n\npassword: admin');
 		}
 	}
 
 	switchToRegistration = (): void => {
-		this.setState((priviusState) => ({ isRegistration: !priviusState.isRegistration }));
+		alert('Not implement yet');
+		//this.setState((priviusState) => ({ isRegistration: !priviusState.isRegistration }));
 	};
 
 	render() {
 		return (
 			<div className='col-md-6 mx-auto'>
-
 				<Form
 					isRegistration={this.state.isRegistration}
 					switchToRegistration={this.switchToRegistration}
@@ -99,4 +99,4 @@ class Login extends React.Component<StateToProps & DispatchToProps, StateToProps
 	}
 }
 
-export const LoginPreloader = withRouter<any>(Login);
+export const LoginPreloader = withRouter(Login);

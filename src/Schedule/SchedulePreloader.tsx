@@ -11,7 +11,7 @@ const mapStateToProps = (state: ReducerState): StateToProps => {
 	};
 };
 
-const mapDispatchToProps = (dispatch: any): DispatchToProps => ({
+const mapDispatchToProps = (dispatch: any): DispatchToProps & DispatchToProps => ({
 	setKinoAfishaValues: (result) => dispatch({ type: SET_KINO_AFISHA, result }),
 	clear: () => dispatch({ type: CLEAR_KINO_AFISHA }),
 });
