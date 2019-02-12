@@ -1,7 +1,7 @@
 import { LoginState } from './interfaces';
 import { AFISHA_COOKIE_NAME } from 'src/Schedule/constants';
 
-const authorization = (login: string, password: string): LoginState => {
+const authorization = (login: string): LoginState => {
     //TODO fetch
     return setCookie(login)
 }
@@ -12,9 +12,6 @@ const setCookie = (login: string): LoginState => {
         token: Math.random().toString(36).substr(2),
     };
     document.cookie = `${AFISHA_COOKIE_NAME}=${user.token}`;
-
-    const checkUser = getCookie();
-    console.log(checkUser);
     return user;
 }
 
