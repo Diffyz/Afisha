@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import './input.css';
 import { State } from './interfaces';
 
+import './input.css';
 export class Input extends React.Component<State> {
 	public render() {
 		return (

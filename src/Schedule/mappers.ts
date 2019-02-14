@@ -1,4 +1,4 @@
-import { AfishaViewModel, Actor, Session } from './interfaces';
+import { AfishaViewModel, ActorState, Session } from './interfaces';
 
 export const Mapper = {
 	mapViewModel: (response: any): AfishaViewModel => ({
@@ -16,15 +16,14 @@ export const Mapper = {
 	}),
 };
 
-const mapActor = (actors: any): Actor => ({
-	partUrl: actors.partUrl,
-	name: actors.name,
+const mapActor = (actors: string): ActorState => ({
+	href: actors != '' ? actors.split(',') : ['']
 });
 
 const mapSession = (session: any): Session => ({
-	id: session.id,
-	name: session.name,
-	address: session.address,
-	url: session.url,
-	session: session.session,
+	id: session.k_id,
+	name: session.k_name,
+	address: session.k_address,
+	url: session.k_url,
+	session: session.sessions,
 });

@@ -1,5 +1,5 @@
+import { fetchHelper } from '../common/helpers/fetchHelpers';
 import { AfishaViewModel, AfishaLoad } from './interfaces';
-import { fetchHelper } from 'src/common/helpers/fetchHelpers';
 import { KINOAFISHA_LOAD } from './constants';
 import { Mapper } from './mappers';
 

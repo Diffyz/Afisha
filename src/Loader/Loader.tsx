@@ -1,16 +1,13 @@
 import * as React from 'react';
+
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { DispatchToProps, StateToProps } from './interface';
-import { withRouter } from 'react-router';
+import { withRouter, RouteComponentProps } from 'react-router';
 import { connect } from 'react-redux';
-
-import './loader.css';
 import { ReducerState } from 'src/interfaces';
 
-class Loader extends React.Component<StateToProps, DispatchToProps> {
-    constructor(props: StateToProps) {
-        super(props);
-    }
+import './loader.css';
+class Loader extends React.Component<RouteComponentProps & StateToProps, DispatchToProps> {
     render() {
         return (
             <div>
@@ -30,4 +27,4 @@ const mapStateToProps = (state: ReducerState): StateToProps => {
     };
 };
 
-export default withRouter<any>(connect(mapStateToProps)(Loader));
+export default withRouter(connect(mapStateToProps)(Loader));

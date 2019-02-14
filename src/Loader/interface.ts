@@ -3,6 +3,7 @@ import { ComponentClass } from 'react';
 interface LoaderState {
     isLoader: boolean
 }
+
 interface StateToProps {
     isLoader: boolean;
 }

@@ -1,5 +1,5 @@
 import { AfishaLoad, AfishaViewModel } from './interfaces';
-import { CLEAR_KINO_AFISHA, SET_KINO_AFISHA } from './constants';
+import { SET_KINO_AFISHA } from './constants';
 
 const initialState: AfishaLoad<AfishaViewModel> = {
 	result: [
@@ -13,39 +13,32 @@ const initialState: AfishaLoad<AfishaViewModel> = {
 			imdb: '',
 			country: '',
 			actors: {
-				partUrl: '',
-				name: '',
+				href: ['']
 			},
 			premier_ua: '',
-			sessions: {
+			sessions: [{
 				id: '',
 				name: '',
 				address: '',
 				url: '',
 				session: '',
-			},
+			}],
 		},
 	],
 };
 
 const reducer = (state = initialState, action: any): AfishaLoad<AfishaViewModel> => {
 	switch (action.type) {
-		case CLEAR_KINO_AFISHA:
-			return clear(state);
 		case SET_KINO_AFISHA:
-			return setKinoAfisha(state, action.result);
+			return setKinoAfisha(action.result);
 	}
 	return state;
 };
 
-const clear = (state: AfishaLoad<AfishaViewModel>): AfishaLoad<AfishaViewModel> => {
-	return { ...state };
-};
 const setKinoAfisha = (
-	state: AfishaLoad<AfishaViewModel>,
 	values: AfishaViewModel[],
 ): AfishaLoad<AfishaViewModel> => {
-	return { ...state, result: values };
+	return { result: values };
 };
 
 export { reducer };

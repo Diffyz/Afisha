@@ -1,4 +1,5 @@
 import Loader from "src/Loader/Loader";
+
 import { DispatchToProps } from 'src/Loader/interface';
 import { SWITCH_LOADER } from 'src/Schedule/constants';
 import { connect } from 'react-redux';

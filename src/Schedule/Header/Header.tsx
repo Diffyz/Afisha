@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { withStyles } from '@material-ui/core/styles';
+
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -9,6 +9,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import { getCookie } from 'src/Login/actions';
+import { withStyles } from '@material-ui/core/styles';
 
 import './header.css';
 const styles = {
@@ -23,6 +24,7 @@ const styles = {
 		marginRight: 20,
 	},
 };
+
 class Header extends React.Component<any> {
 	state = {
 		auth: true,
@@ -40,6 +42,7 @@ class Header extends React.Component<any> {
 	handleClose = () => {
 		this.setState({ anchorEl: null });
 	};
+
 	render() {
 		const { classes } = this.props;
 		const { auth, anchorEl } = this.state;

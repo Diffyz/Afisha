@@ -7,6 +7,7 @@ import { authorization } from './actions';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 
 import './login.css';
+import { SCHEDULE_URI } from 'src/constants';
 
 class Form extends React.Component<FormState & StateToProps> {
 	public render() {
@@ -71,7 +72,7 @@ class Login extends React.Component<RouteComponentProps & StateToProps & Dispatc
 	onSubmit(): void {
 		if (this.state.login == 'admin' && this.state.password == 'admin') {
 			authorization(this.state.login);
-			this.props.history.push('/schedule');
+			this.props.history.push(SCHEDULE_URI);
 		} else {
 			alert('login: admin\n\npassword: admin');
 		}
