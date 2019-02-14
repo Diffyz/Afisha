@@ -10,8 +10,13 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import { getCookie } from 'src/Login/actions';
 import { withStyles } from '@material-ui/core/styles';
+import { connect } from 'react-redux';
+import { DispatchToProps } from './interfaces';
+import { SIGN_OUT } from '../constants';
+import { withRouter, RouteComponentProps } from 'react-router';
 
 import './header.css';
+import { LOGIN_URI } from 'src/constants';
 const styles = {
 	root: {
 		flexGrow: 1,
@@ -25,13 +30,13 @@ const styles = {
 	},
 };
 
-class Header extends React.Component<any> {
+class Header extends React.Component<RouteComponentProps & DispatchToProps &{classes: {root:string,menuButton:string,grow:string}}> {
 	state = {
 		auth: true,
 		anchorEl: null,
 	};
 
-	handleChange = (event: any) => {
+	handleChange = () => {
 		this.setState({ auth: getCookie() != '' });
 	};
 
@@ -39,19 +44,21 @@ class Header extends React.Component<any> {
 		this.setState({ anchorEl: event.currentTarget });
 	};
 
-	handleClose = () => {
-		this.setState({ anchorEl: null });
+	signOut = () => {
+		this.props.signOut();
+		this.props.history.push(LOGIN_URI);
 	};
 
 	render() {
+		debugger;
 		const { classes } = this.props;
 		const { auth, anchorEl } = this.state;
 		const open = Boolean(anchorEl);
-
+		debugger;
 		return (
 			<div className='header'>
 				<div className={classes.root}>
-					<AppBar position='static'>
+					<AppBar position='static' >
 						<Toolbar>
 							<IconButton className={classes.menuButton} color='inherit' aria-label='Menu'>
 								<MenuIcon />
@@ -81,10 +88,8 @@ class Header extends React.Component<any> {
 											horizontal: 'right',
 										}}
 										open={open}
-										onClose={this.handleClose}
 									>
-										<MenuItem onClick={this.handleClose}>Profile</MenuItem>
-										<MenuItem onClick={this.handleClose}>My account</MenuItem>
+										<MenuItem onClick={this.signOut}>Log out</MenuItem>
 									</Menu>
 								</div>
 							)}
@@ -96,4 +101,10 @@ class Header extends React.Component<any> {
 	}
 }
 
-export default withStyles(styles)(Header);
+const mapDispatchToProps = (dispatch: any): DispatchToProps => ({
+	signOut: () => dispatch({ type: SIGN_OUT }),
+});
+
+
+export default withRouter((connect(null, mapDispatchToProps))(withStyles(styles)(Header)));
+

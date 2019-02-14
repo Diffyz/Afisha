@@ -13,6 +13,7 @@ import { Actor } from './Actors/Actor';
 import { Session } from './Session/Session';
 
 import './film.css';
+import Header from 'src/Schedule/Header/Header';
 
 class Film extends React.Component<RouteComponentProps<RouteState> & StateToProps & DispatchToProps & { loader: React.SFC } & DispatchToPropsLoader> {
     componentDidMount = async (): Promise<void> => {
@@ -37,21 +38,24 @@ class Film extends React.Component<RouteComponentProps<RouteState> & StateToProp
         const image = ` ${FULL_URL_KINO_AFISHA}${this.props.film.image.replace('sm_', '')}`;
         const { loader: Loader } = this.props;
         return (
-            <Loader>
-                <div className='background' style={this.getStyles(image)}>
-                    <div className='content'>
-                        <div className='left-side'>
-                            <img className='avatar_img' src={image} alt="" />
-                        </div>
-                        <div className='right-side'>
-                            <h4>Название фильма: {this.props.film.name}</h4>
-                            <h4>Рейтинг: {this.props.film.vote}</h4>
-                            <Actor href={this.props.film.actors.href} />
-                            <Session sessions={this.props.film.sessions} />
+            <div>
+                <Header />
+                <Loader>
+                    <div className='background' style={this.getStyles(image)}>
+                        <div className='content'>
+                            <div className='left-side'>
+                                <img className='avatar_img' src={image} alt="" />
+                            </div>
+                            <div className='right-side'>
+                                <h4>Название фильма: {this.props.film.name}</h4>
+                                <h4>Рейтинг: {this.props.film.vote}</h4>
+                                <Actor href={this.props.film.actors.href} />
+                                <Session sessions={this.props.film.sessions} />
+                            </div>
                         </div>
                     </div>
-                </div>
-            </Loader>
+                </Loader>
+            </div>
         )
     }
 }
