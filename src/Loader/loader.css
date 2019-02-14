@@ -1,7 +1,0 @@
-.loader{
-    position: fixed;
-    top: 45%;
-    left: 47%;
-    z-index: 9999;
-    background: url('../common/img/loader.png')
-}
