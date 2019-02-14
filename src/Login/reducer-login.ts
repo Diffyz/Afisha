@@ -5,10 +5,11 @@ const initialState: LoginState = {
 	name: '',
 	token: '',
 };
-const reducer = (state = initialState, action: any) => {
+
+const reducer = (state = initialState, action: any): LoginState => {
 	switch (action.type) {
 		case SIGN_OUT:
-			return signOut(state);
+			return signOut();
 		case SIGN_IN:
 			return signIn(state, action);
 		case SIGN_UP:
@@ -21,9 +22,11 @@ const reducer = (state = initialState, action: any) => {
 const signIn = (state: LoginState, action: any): LoginState => {
 	return { ...state, name: action.user.name, token: action.user.token };
 };
-const signOut = (state: LoginState): LoginState => {
+
+const signOut = (): LoginState => {
 	return { ...initialState };
 };
+
 const signUp = (state: LoginState): LoginState => {
 	return { ...state };
 };

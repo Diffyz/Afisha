@@ -7,9 +7,9 @@ interface AfishaViewModel {
 	count_vote: string;
 	imdb: string;
 	country: string;
-	actors: Actor;
+	actors: ActorState;
 	premier_ua: string;
-	sessions: Session;
+	sessions: Session[];
 }
 
 interface Session {
@@ -20,9 +20,8 @@ interface Session {
 	session: string;
 }
 
-interface Actor {
-	partUrl: string;
-	name: string;
+interface ActorState {
+	href: string[]
 }
 
 interface AfishaLoad<T> {
@@ -39,7 +38,6 @@ interface StateToProps {
 
 interface DispatchToProps {
 	setKinoAfishaValues: (value: AfishaViewModel[]) => void;
-	clear: () => void;
 }
 
-export { AfishaViewModel, Session, Actor, AfishaLoad, StateToProps, DispatchToProps, FilmViewModel };
+export { AfishaViewModel, Session, ActorState, AfishaLoad, StateToProps, DispatchToProps, FilmViewModel };

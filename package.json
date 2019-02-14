@@ -39,7 +39,6 @@
     "react-router-dom": "^4.3.1",
     "react-router-redux": "^5.0.0-alpha.9",
     "react-tap-event-plugin": "^3.0.3",
-    "react-yandex-maps": "^3.0.2",
     "redux": "^4.0.1",
     "resolve": "1.6.0",
     "source-map-loader": "^0.2.1",

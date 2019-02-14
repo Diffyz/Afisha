@@ -1,4 +1,4 @@
-import { DOMAIN_NAME } from 'src/constants';
+import { DOMAIN_NAME } from '../../constants';
 
 const fetchHelper = {
 	Get: async (searchCriteria: string): Promise<any> => {

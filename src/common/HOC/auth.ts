@@ -4,4 +4,5 @@ import { LoginPreloader } from 'src/Login/Login';
 const withAuth = (component: any): any => {
     return getCookie() != '' ? component : LoginPreloader;
 }
+
 export { withAuth }

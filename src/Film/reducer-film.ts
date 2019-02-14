@@ -1,6 +1,6 @@
 import { FilmState } from './interfaces';
-import { SET_FILM } from 'src/Schedule/constants';
-import { AfishaViewModel } from 'src/Schedule/interfaces';
+import { AfishaViewModel } from '../Schedule/interfaces';
+import { SET_FILM } from '../Schedule/constants';
 
 const initialState: FilmState = {
     film: {
@@ -13,17 +13,16 @@ const initialState: FilmState = {
         imdb: '',
         country: '',
         actors: {
-            partUrl: '',
-            name: '',
+            href:['']
         },
         premier_ua: '',
-        sessions: {
+        sessions: [{
             id: '',
             name: '',
             address: '',
             url: '',
             session: '',
-        },
+        }],
     },
 };
 

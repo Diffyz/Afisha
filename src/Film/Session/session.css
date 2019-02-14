@@ -1,0 +1,13 @@
+.sessions{
+    display: inline-block;
+    width: 100%;
+    height: 30%;
+    display: inline-block;
+}
+.cinemas{
+    border: 1px solid black;
+}
+.session{
+    display: inline-block;
+    margin: 10px;
+}

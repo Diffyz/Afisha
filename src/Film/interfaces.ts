@@ -1,4 +1,4 @@
-import { AfishaViewModel } from 'src/Schedule/interfaces';
+import { AfishaViewModel } from "../Schedule/interfaces";
 
 interface StateToProps {
     film: AfishaViewModel;
@@ -11,4 +11,9 @@ interface DispatchToProps {
 interface FilmState {
     film: AfishaViewModel
 }
-export { StateToProps, DispatchToProps, FilmState }
+
+interface RouteState {
+    id: string;
+}
+
+export { StateToProps, DispatchToProps, FilmState,RouteState }

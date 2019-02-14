@@ -1,14 +1,13 @@
 import * as React from 'react';
+
+import Header from './Header/Header';
+import Listing from './Listing/Listing';
 import { GetAfisha } from './actions';
 import { StateToProps, DispatchToProps, AfishaViewModel } from './interfaces';
 import { DispatchToProps as DispatchToPropsLoader } from '../Loader/interface';
 
-import Header from './Header/Header';
-import { Listing } from './Listing/Listing';
-
 import './schedule.css';
 import '../common/styles.css';
-
 class Schedule extends React.Component<DispatchToProps & StateToProps & DispatchToPropsLoader & { loader: React.SFC }> {
 	componentDidMount = async (): Promise<void> => {
 		this.props.switchLoader(true);
